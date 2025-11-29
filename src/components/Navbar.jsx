@@ -1,6 +1,7 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-import { House, BoxArrowInRight, PersonPlus, Cart } from 'react-bootstrap-icons';
+import { FaPizzaSlice } from 'react-icons/fa';
+import { BoxArrowInRight, PersonPlus, Cart } from 'react-bootstrap-icons';
 import './Navbar.css';
 
 function Navbar({Token, Total}) {
@@ -9,6 +10,11 @@ function Navbar({Token, Total}) {
      
       <div className="nav-links">
          <h2>Pizzería Mamma Mia</h2>
+
+         <Button as={Link} to="/" variant="outline-warning" style={{ marginRight: '10px', display: 'flex', alignItems: 'center'}}> <FaPizzaSlice style={{ marginRight: '5px' }} /> Home
+          </Button>
+
+        
         {Token ? (
           <>
 
@@ -21,17 +27,14 @@ function Navbar({Token, Total}) {
           </>
         ) : (
           <>
-            <Button variant="outline-warning">
+            <Button as={Link} to="/login" variant="outline-warning">
               🔐 Login
             </Button>
-            <Button variant="outline-warning">
+            <Button as={Link} to="/register" variant="outline-warning">
               🔐 Register
             </Button>
           </>
-        )}
-
-        {/* Carrito con total */}
-        
+        )}       
       </div>
       <Button className='btn' variant="outline-warning" style={{ marginLeft: '10px', display: 'flex', alignItems: 'center' }}>
           <Cart style={{ marginRight: '5px' }} /> ${Total}25.000
